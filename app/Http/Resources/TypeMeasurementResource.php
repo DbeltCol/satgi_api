@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class TypeMeasurementResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,11 +18,8 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'role_id' => $this->mainRole()->id ?? 'No role',
-            'role_description' => $this->mainRole()->description ?? 'No role',
-            'created_at' => Carbon::parse($this->created_at)->diffForHumans(),
-            //'permissions' => $this->mainRole()->permissions->pluck('name') ?? 'No permissions',
+            'symbol' => $this->symbol,
+            'created_at' => Carbon::parse($this->created_at)->diffForHumans()
         ];
     }
 }
