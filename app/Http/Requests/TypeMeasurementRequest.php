@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class TypeMeasurementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . optional($this->route('user'))->id,
-            'role_id' => 'required|exists:roles,id',
+            'name' => 'required|string|max:255|unique:type_measurements,name,'.optional($this->route('type_measurement'))->id,
+            'symbol' => 'required|string|max:255|unique:type_measurements,symbol,'.optional($this->route('type_measurement'))->id,
         ];
     }
 
@@ -32,13 +31,13 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => __('default.name.required'),
-            'email.required' => __('default.email.required'),
-            'email.email' => __('default.email.email'),
-            'email.unique' => __('default.email.unique'),
-            'name.max' => __('default.name.max'),
             'name.string' => __('default.name.string'),
-            'role_id.required' => __('default.role_id.required'),
-            'role_id.exists' => __('default.role_id.exists'),
+            'name.max' => __('default.name.max'),
+            'name.unique' => __('default.name.unique'),
+            'symbol.required' => __('default.symbol.required'),
+            'symbol.string' => __('default.symbol.string'),
+            'symbol.max' => __('default.symbol.max'),
+            'symbol.unique' => __('default.symbol.unique'),
         ];
     }
 }

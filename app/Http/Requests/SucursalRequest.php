@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class SucursalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,6 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . optional($this->route('user'))->id,
-            'role_id' => 'required|exists:roles,id',
         ];
     }
 
@@ -32,13 +30,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => __('default.name.required'),
-            'email.required' => __('default.email.required'),
-            'email.email' => __('default.email.email'),
-            'email.unique' => __('default.email.unique'),
-            'name.max' => __('default.name.max'),
             'name.string' => __('default.name.string'),
-            'role_id.required' => __('default.role_id.required'),
-            'role_id.exists' => __('default.role_id.exists'),
+            'name.max' => __('default.name.max'),
         ];
     }
 }
