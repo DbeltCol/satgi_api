@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SensorController;
 use App\Http\Controllers\SensorMeasurementController;
@@ -25,6 +26,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('sensors', SensorController::class);
     Route::post('change-state-sensor', [SensorController::class, 'changeStateSensor']);
     Route::get('/sensors-measurements/{id}', [SensorMeasurementController::class, 'measurementsBySensor']);
+    //Agregar a permisos
+    Route::get('reports/sucursals', [ReportController::class, 'getSucursalsAction']);
+    Route::get('reports/alerts', [ReportController::class, 'getAlertsAction']);
+    Route::get('reports/by-alert', [ReportController::class, 'getByAlertAction']);
 });
 
 Route::post('/sensors-measurements', [SensorMeasurementController::class, 'createMeasurementsBySensor']);

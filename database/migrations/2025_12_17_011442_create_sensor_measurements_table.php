@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sensor_id')->constrained('sensors');
             $table->decimal('measurement', 10, 2);
+            $table->enum('alert', ['normal', 'amarilla', 'naranja', 'roja'])->default('normal');
             $table->softDeletes();
             $table->timestamps();
         });

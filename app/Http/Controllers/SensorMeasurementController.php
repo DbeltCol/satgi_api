@@ -17,7 +17,7 @@ class SensorMeasurementController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('permission:get_measurements_by_sensor',only: ['measurementsBySensor']),
-            new Middleware('permission:create_measurements_by_sensor',only: ['createMeasurementsBySensor']),
+            //new Middleware('permission:create_measurements_by_sensor',only: ['createMeasurementsBySensor']),
         ];
     }
 
